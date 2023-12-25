@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { ElMessage } from 'element-plus'
 
 const request = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -17,14 +16,10 @@ const request = axios.create({
 request.interceptors.response.use((response) => {
   const res = response.data
   if (res.code !== 200) {
-    ElMessage.error(res.msg || '未知错误')
     return Promise.reject(new Error(res.msg || '未知错误'))
   } else {
-    if (res.msg != null) {
-      ElMessage.success(res.msg)
-    }
     return res.data
   }
 })
 
-export default request;
+export default request

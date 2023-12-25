@@ -1,16 +1,19 @@
 <script setup>
-defineProps(['label', 'value', 'focus'])
+defineProps(['label', 'value', 'focus', 'type', 'readonly', 'placeholder'])
 defineEmits(['update:value', 'update:focus'])
 </script>
 
 <template>
   <div class="input-box">
     <label>{{ label }}</label>
-    <input type="text"
-           :value="value"
-           @input="$emit('update:value', $event.target.value)"
-           @focus="$emit('update:focus', true)"
-           @blur="$emit('update:focus', false)"
+    <input
+      :type="type"
+      :value="value"
+      :readonly="readonly"
+      :placeholder="placeholder"
+      @input="$emit('update:value', $event.target.value)"
+      @focus="$emit('update:focus', true)"
+      @blur="$emit('update:focus', false)"
     />
     <slot></slot>
   </div>
