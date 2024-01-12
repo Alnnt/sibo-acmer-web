@@ -21,7 +21,7 @@ function getCode() {
     <div class="msg">
       感谢惠顾！
       <br />
-      (每周套餐于周三自动答题)
+      (每周套餐于周四自动答题)
       <br />
       售后服务:
       <br />

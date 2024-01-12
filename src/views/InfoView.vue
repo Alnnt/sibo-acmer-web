@@ -96,26 +96,26 @@ function handleClassSelected(clazz) {
 }
 
 function handleConfirm() {
-  // if (cdkeyStatue.usable !== true) {
-  //   tip.value = '请检查您的序列号';
-  //   return;
-  // }
-  // if (form.schoolId === '') {
-  //   tip.value = '请选择学校';
-  //   return;
-  // }
-  // if (form.schoolId === '') {
-  //   tip.value = '请输入学号';
-  //   return;
-  // }
-  // if (form.password === '') {
-  //   tip.value = '请输入密码';
-  //   return;
-  // }
-  // if (form.classId === '') {
-  //   tip.value = '请选择班级';
-  //   return;
-  // }
+  if (cdkeyStatue.usable !== true) {
+    tip.value = '请检查您的序列号';
+    return;
+  }
+  if (form.schoolId === '') {
+    tip.value = '请选择学校';
+    return;
+  }
+  if (form.schoolId === '') {
+    tip.value = '请输入学号';
+    return;
+  }
+  if (form.password === '') {
+    tip.value = '请输入密码';
+    return;
+  }
+  if (form.classId === '') {
+    tip.value = '请选择班级';
+    return;
+  }
   useInfoStore().updateInfo(
     form.cdkey,
     form.userId,
@@ -128,7 +128,7 @@ function handleConfirm() {
 }
 
 function handleSponsor() {
-  window.open('https://afdian.net/a/icey_sama')
+  window.open('https://afdian.net/a/alnnt')
 }
 </script>
 
