@@ -1,6 +1,6 @@
 <script setup>
 import InputBox from '@/components/InputBox.vue'
-import { reactive, ref } from 'vue'
+import { reactive, ref, watch } from "vue";
 import { debounce } from '@/util/debounce.js'
 import { getCdkeyStatue, listSchool, userLogin } from '@/api/info.js'
 import { CircleCheck, CircleClose } from '@element-plus/icons-vue'
@@ -35,6 +35,9 @@ const handleUpdateCdkey = debounce(() => {
     .then((res) => {
       cdkeyStatue.usable = res.usable
       cdkeyStatue.description = res.description
+      if (form.studentId !== '') {
+        handleInputUser()
+      }
     })
     .catch(() => {
       cdkeyStatue.usable = null
@@ -66,8 +69,9 @@ const handleInputUser = debounce(() => {
     form.password === '' ||
     cdkeyStatue.usable !== true ||
     form.schoolId === ''
-  )
+  ) {
     return
+  }
   userLogin(form)
     .then((res) => {
       userStatue.usable = true
@@ -83,6 +87,16 @@ const handleInputUser = debounce(() => {
       userStatue.description = e
     })
 }, 2000)
+
+watch(schoolNameFocus, (focus) => {
+  if (focus === false && schoolList.value.length !== 0) {
+    for (const school of schoolList.value) {
+      if (school.schoolName === schoolName.value && school.id !== form.schoolId) {
+        handleSchoolSelected(school)
+      }
+    }
+  }
+})
 
 /**
  * 班级选择
